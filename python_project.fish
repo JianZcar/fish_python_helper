@@ -192,16 +192,14 @@ function make-python-venv
 end
 
 function run-python-venv
-  source .venv/bin/activate.fish
+    source .venv/bin/activate.fish
 end
 
 function pip
-    # Run the original pip install command
     command pip $argv
+    emit pip:after
+end
 
-    # Update the requirements.txt file with the current state of the installed packages
-    if test -f requirements.txt
-        echo "Updating requirements.txt"
-        command pip freeze > requirements.txt
-    end
+function pip_after --on-event pip:after
+    command pip freeze > requirement.txt
 end
