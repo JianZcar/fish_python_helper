@@ -9,7 +9,7 @@ function new-python-project
     set project_name $argv[1]
 
     # Check if the project directory already exists
-    if test -d $project_name
+    if test -d ~/Dev/Projects/Python/$project_name
         echo "Error: Directory '$project_name' already exists."
         return 1
     end
