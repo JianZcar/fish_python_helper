@@ -21,7 +21,7 @@ function new-python-project
     echo "# Python Project" > README.md
     touch main.py
     
-    make-python-venv 
+    create-python-venv 
 
     # Print a success message
     echo "Python project '$project_name' has been created and virtual environment is set up."
@@ -154,7 +154,7 @@ function check-python-project
     end
 end
 
-function make-python-venv
+function create-python-venv
     # Define the virtual environment directory
     set venv_dir ./.venv
     set requirements_file ./requirements.txt
