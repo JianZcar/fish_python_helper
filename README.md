@@ -1,4 +1,4 @@
-# README for Python Project Management Script
+# Python Project Management Script
 
 ## Overview
 
