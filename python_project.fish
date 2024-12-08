@@ -203,3 +203,5 @@ end
 function pip_after --on-event pip:after
     command pip freeze > requirements.txt
 end
+
+test
