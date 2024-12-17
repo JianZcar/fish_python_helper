@@ -137,13 +137,14 @@ function check-python-project
 
     if test $has_venv -eq 1 -a $has_requirements -eq 1
         echo "  This project has no .venv and no requirements.txt."
-        echo "  To make a virtual envronment, run: make-python-venv"
+        echo "  To make a virtual envronment, run: create-python-venv"
     else
         if test $has_venv -eq 0
             echo "  This project has a virtual environment (.venv)."
             run-python-venv
         else
             echo "  This project does not have a virtual environment (.venv)."
+            echo "  To make a virtual envronment, run: create-python-venv"
         end
 
         if test $has_requirements -eq 0
@@ -157,7 +158,6 @@ end
 function create-python-venv
     # Define the virtual environment directory
     set venv_dir ./.venv
-    set requirements_file ./requirements.txt
 
     # Check if the virtual environment already exists
     if test -d $venv_dir
@@ -170,11 +170,6 @@ function create-python-venv
     echo "Created virtual environment in '$venv_dir'."
     echo "Activating the virtual environment..."
     source $venv_dir/bin/activate.fish
-    pip install --upgrade pip
-
-    # Create an empty requirements.txt file
-    touch $requirements_file
-    echo "Created an empty requirements.txt file in the current directory."
 
     # Optionally, activate the virtual environment and install common packages
     echo "Do you want to install common packages? (y/N)"
@@ -203,3 +198,5 @@ end
 function pip_after --on-event pip:after
     command pip freeze > requirements.txt
 end
+
+echo hello
